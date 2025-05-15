@@ -1,0 +1,77 @@
+
+<style>
+.btn-search{
+  background-color:rgb(31, 100, 13);
+  color:#fff;
+  border-radius:25px;
+  padding:0.5rem 1rem 0.5rem 1rem;
+}
+.btn-search:hover{
+  background-color:#fff;
+  color:rgb(31, 100, 13);
+  border-color:rgb(31, 100, 13);
+}
+.btn-search i{
+   display:inline;
+   margin-right:0.5rem;
+}
+.search-input{
+  border-radius:25px;
+  padding:0.5rem 3rem 0.5rem 3rem;
+  font-size:1rem;
+}
+
+.navbar {
+  z-index: 1050; /* higher than default content */
+  position: relative;
+}
+.navbar-collapse {
+  background-color: white;  /* Or any contrasting color */
+  z-index: 1040;
+}
+.fa-regular{
+  color:rgb(31, 100, 13);
+} 
+
+
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+  
+      <form class="d-flex col-4 offset-3" role="search" onsubmit="return goToSearch()">
+        <input class="form-control me-2 search-input" type="search" placeholder="Search Destination" aria-label="Search"/>       
+        <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+      </form>
+     
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+       
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/listings/new">List on TripZY</a>
+          <% if(!currUser){%>
+          <a class="nav-link" aria-current="page" href="/signup"><b>Sign Up</b></a>
+          <a class="nav-link" href="/login"><b>Login</b></a>
+          <%}%>
+          <% if(currUser){%>
+          <a class="nav-link" href="/logout"><b>LogOut</b></a>
+          <%}%>
+        </div>
+        
+      </div>
+    </div>
+  </nav>
+  <script>
+    function goToSearch(){
+      const query=document.getElementsByClassName("search-input")[0].value.trim();
+      if(query){
+        console.log(query);
+        window.location.href=`/listings/search/${encodeURIComponent(query)}`;
+      }
+      return false;
+    }
+    
+  </script>
