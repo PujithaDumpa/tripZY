@@ -72,9 +72,9 @@ tripzy/
    -add booking and calender functionality
    -add admin dashboard for managing listings
 ```
-
+```
 📬 Contact
 Made with ❤️ by Pujitha Dumpa
 Feel free to open issues or submit pull requests.
-
+```
 
